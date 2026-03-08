@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── VentureBridge design tokens ── */
+:root {
+  --black: #080b12;
+  --navy: #0d1220;
+  --panel: #111827;
+  --border: #1e2d45;
+  --blue: #1d6ef5;
+  --blue-bright: #3b82f6;
+  --amber: #f59e0b;
+  --amber-dim: #b45309;
+  --green: #10b981;
+  --red: #ef4444;
+  --text: #f0f4fc;
+  --text-secondary: #b8c7e0;
+  --muted: #7a8faa;
+  --subtle: #334155;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+@layer components {
+  /* ── Cards ── */
+  .vb-card {
+    @apply bg-vb-panel border border-vb-border rounded-lg p-5;
+  }
+
+  /* ── Badges ── */
+  .vb-badge {
+    @apply inline-block px-2.5 py-0.5 rounded text-[11px] font-mono font-medium tracking-[0.5px];
+  }
+  .vb-badge-blue {
+    @apply vb-badge bg-blue-500/15 text-blue-400;
+  }
+  .vb-badge-green {
+    @apply vb-badge bg-emerald-500/15 text-emerald-400;
+  }
+  .vb-badge-amber {
+    @apply vb-badge bg-amber-500/15 text-amber-400;
+  }
+  .vb-badge-red {
+    @apply vb-badge bg-red-500/15 text-red-400;
+  }
+  .vb-badge-purple {
+    @apply vb-badge bg-violet-500/15 text-violet-400;
+  }
+  .vb-badge-gray {
+    @apply vb-badge bg-slate-500/15 text-slate-400;
+  }
+
+  /* ── Buttons ── */
+  .vb-btn {
+    @apply px-6 py-2.5 rounded font-body font-semibold text-sm cursor-pointer border-none transition-all duration-150;
+  }
+  .vb-btn-primary {
+    @apply vb-btn bg-vb-blue text-white hover:bg-vb-blue-bright;
+  }
+  .vb-btn-secondary {
+    @apply vb-btn bg-vb-panel text-vb-text border border-vb-border hover:border-vb-blue;
+  }
+
+  /* ── Form inputs ── */
+  .vb-input {
+    @apply bg-vb-panel border border-vb-border rounded text-vb-text px-3.5 py-2.5 text-sm font-body outline-none w-full transition-colors duration-150 focus:border-vb-blue;
+  }
+  .vb-select {
+    @apply vb-input cursor-pointer;
+  }
+  .vb-textarea {
+    @apply vb-input resize-y min-h-[100px];
+  }
+  .vb-label {
+    @apply text-[12px] text-vb-muted font-mono tracking-[0.5px];
+  }
+
+  /* ── Sidebar ── */
+  .sidebar-item {
+    @apply flex items-center gap-2.5 px-5 py-2.5 text-sm text-vb-text-secondary cursor-pointer transition-all duration-100 border-l-2 border-transparent hover:text-vb-text hover:bg-vb-blue/[0.06];
+  }
+  .sidebar-item.active {
+    @apply text-vb-text bg-vb-blue/[0.12] border-l-vb-blue font-medium;
+  }
+
+  /* ── Table ── */
+  .vb-table-wrap {
+    @apply bg-vb-panel border border-vb-border rounded-lg overflow-hidden;
+  }
+  .vb-th {
+    @apply font-mono text-[10px] tracking-[1.5px] text-vb-text-secondary uppercase px-4 py-3 text-left font-semibold border-b border-vb-border bg-vb-navy;
+  }
+  .vb-td {
+    @apply px-4 py-3.5 text-sm text-vb-text border-b border-vb-border/50;
+  }
+
+  /* ── Page header ── */
+  .page-header {
+    @apply px-10 py-8 border-b border-vb-border flex items-end justify-between;
+  }
+  .page-title {
+    @apply font-display text-4xl tracking-wide leading-none;
+  }
+  .page-subtitle {
+    @apply text-vb-text-secondary text-sm mt-1.5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .border-l-vb-blue {
+    border-left-color: var(--blue);
+  }
+}
