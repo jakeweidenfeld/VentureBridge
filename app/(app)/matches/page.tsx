@@ -69,7 +69,7 @@ export default function MatchesPage() {
             thesis_keywords
           )
         `)
-        .eq("startup_id", sp.id)
+        .eq("startup_id", (sp as any).id)
         .eq("is_active", true)
         .eq("startup_dismissed", false)
         .order("overall_score", { ascending: false });
