@@ -49,10 +49,10 @@ async function fetchUserProfile(): Promise<UserContextValue> {
       userId: user.id,
       email: user.email ?? "",
       fullName: null,
-      userType: profile.user_type as "startup" | "vc",
+      userType: (profile as any).user_type as "startup" | "vc",
     };
 
-    if (profile.user_type === "startup") {
+    if ((profile as any).user_type === "startup") {
       const { data: sp } = await supabase
         .from("startup_profiles")
         .select("company_name, current_stage, primary_sector")
