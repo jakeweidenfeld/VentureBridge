@@ -54,11 +54,12 @@ async function fetchUserProfile(): Promise<UserContextValue> {
     };
 
     if ((profile as any).user_type === "startup") {
-      const { data: sp } = await supabase
+      const { data: spRaw } = await supabase
         .from("startup_profiles")
         .select("company_name, current_stage, primary_sector")
         .eq("user_id", user.id)
         .single();
+      const sp = spRaw as any;
     const profile = profileRaw as any;
 
       const name = sp?.company_name ?? profile.full_name ?? "My Startup";
@@ -78,11 +79,12 @@ async function fetchUserProfile(): Promise<UserContextValue> {
         displaySubtitle: sub,
       };
     } else {
-      const { data: vp } = await supabase
+      const { data: vpRaw } = await supabase
         .from("vc_profiles")
         .select("fund_name, fund_size, hq_city")
         .eq("user_id", user.id)
         .single();
+      const vp = vpRaw as any;
     const profile = profileRaw as any;
 
       const name = vp?.fund_name ?? profile.full_name ?? "My Fund";
