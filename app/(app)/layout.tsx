@@ -39,15 +39,15 @@ async function fetchUserProfile(): Promise<UserContextValue> {
 
     const { data: profile } = await supabase
       .from("profiles")
-      .select("user_type, full_name, email")
+      .select("user_type, full_name")
       .eq("id", user.id)
       .single();
 
-    if (!profile) return { ...FALLBACK, userId: user.id, email: (user as any).email ?? "" };
+    if (!profile) return { ...FALLBACK, userId: user.id, email: user.email ?? "" };
 
     const base = {
       userId: user.id,
-      email: profile.email ?? (user as any).email ?? "",
+      email: profile.email ?? "",
       fullName: profile.full_name ?? null,
       userType: profile.user_type as "startup" | "vc",
     };
