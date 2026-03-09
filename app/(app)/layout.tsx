@@ -43,11 +43,11 @@ async function fetchUserProfile(): Promise<UserContextValue> {
       .eq("id", user.id)
       .single();
 
-    if (!profile) return { ...FALLBACK, userId: user.id, email: user.email ?? "" };
+    if (!profile) return { ...FALLBACK, userId: user.id, email: (user as any).email ?? "" };
 
     const base = {
       userId: user.id,
-      email: profile.email ?? user.email ?? "",
+      email: profile.email ?? (user as any).email ?? "",
       fullName: profile.full_name ?? null,
       userType: profile.user_type as "startup" | "vc",
     };
