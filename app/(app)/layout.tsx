@@ -37,11 +37,12 @@ async function fetchUserProfile(): Promise<UserContextValue> {
 
     if (!user) return FALLBACK;
 
-    const { data: profile } = await supabase
+    const { data: profileRaw } = await supabase
       .from("profiles")
       .select("user_type, full_name")
       .eq("id", user.id)
       .single();
+    const profile = profileRaw as any;
 
     if (!profile) return { ...FALLBACK, userId: user.id, email: user.email ?? "" };
 
@@ -58,6 +59,7 @@ async function fetchUserProfile(): Promise<UserContextValue> {
         .select("company_name, current_stage, primary_sector")
         .eq("user_id", user.id)
         .single();
+    const profile = profileRaw as any;
 
       const name = sp?.company_name ?? profile.full_name ?? "My Startup";
       const sub =
@@ -81,6 +83,7 @@ async function fetchUserProfile(): Promise<UserContextValue> {
         .select("fund_name, fund_size, hq_city")
         .eq("user_id", user.id)
         .single();
+    const profile = profileRaw as any;
 
       const name = vp?.fund_name ?? profile.full_name ?? "My Fund";
       const sub =
