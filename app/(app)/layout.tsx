@@ -48,7 +48,7 @@ async function fetchUserProfile(): Promise<UserContextValue> {
     const base = {
       userId: user.id,
       email: user.email ?? "",
-      fullName: profile.full_name ?? null,
+      fullName: null,
       userType: profile.user_type as "startup" | "vc",
     };
 
