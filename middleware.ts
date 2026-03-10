@@ -44,6 +44,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/pipeline") ||
     pathname.startsWith("/pitch") ||
     pathname.startsWith("/profile") ||
+    pathname.startsWith("/apply") ||
     pathname.startsWith("/vc");
 
   if (isAppRoute && !user) {

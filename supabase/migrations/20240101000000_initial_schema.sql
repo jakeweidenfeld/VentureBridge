@@ -47,7 +47,7 @@ BEGIN
     NEW.id,
     NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'full_name', ''),
-    COALESCE((NEW.raw_user_meta_data->>'user_type')::user_type, 'startup')
+    COALESCE((NEW.raw_user_meta_data->>'user_type')::public.user_type, 'startup'::public.user_type)
   );
   RETURN NEW;
 END;

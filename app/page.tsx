@@ -63,6 +63,12 @@ export default function LandingPage() {
             How It Works
           </a>
           <Link
+            href="/pricing"
+            className="px-4 py-1.5 text-[13px] text-vb-muted hover:text-vb-text transition-colors"
+          >
+            Pricing
+          </Link>
+          <Link
             href="/login"
             className="px-4 py-1.5 text-[13px] text-vb-muted hover:text-vb-text transition-colors border border-transparent hover:border-vb-border rounded"
           >
@@ -209,7 +215,7 @@ export default function LandingPage() {
                 </li>
               ))}
             </ul>
-            <Link href="/signup?type=vc" className="inline-block px-6 py-2.5 bg-vb-amber text-vb-black text-sm font-semibold rounded hover:bg-amber-400 transition-colors">
+            <Link href="/apply" className="inline-block px-6 py-2.5 bg-vb-amber text-vb-black text-sm font-semibold rounded hover:bg-amber-400 transition-colors">
               Join as an Investor →
             </Link>
           </div>
@@ -298,7 +304,7 @@ export default function LandingPage() {
           <Link href="/signup?type=startup" className="px-8 py-4 bg-vb-blue text-white text-[15px] font-bold rounded-md hover:bg-vb-blue-bright hover:-translate-y-0.5 transition-all">
             Apply as a Startup
           </Link>
-          <Link href="/signup?type=vc" className="px-8 py-4 bg-vb-amber text-vb-black text-[15px] font-bold rounded-md hover:bg-amber-400 hover:-translate-y-0.5 transition-all">
+          <Link href="/apply" className="px-8 py-4 bg-vb-amber text-vb-black text-[15px] font-bold rounded-md hover:bg-amber-400 hover:-translate-y-0.5 transition-all">
             Join as an Investor
           </Link>
         </div>
