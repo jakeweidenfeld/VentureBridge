@@ -111,9 +111,9 @@ export default function LandingPage() {
           </h1>
 
           <p className="text-[19px] text-vb-text-secondary leading-[1.65] max-w-[560px] mb-11 font-normal">
-            VentureBridge is the smartest funnel between early-stage startups
-            and the investors who are built to back them — closing the
-            seed-to-Series A gap one match at a time.
+            VentureBridge connects startups with venture capital funds and
+            investors — solving the inefficient &quot;spray-and-pray&quot; sourcing
+            problem by matching founders with the right investors.
           </p>
 
           <div className="flex items-center gap-3.5 flex-wrap">
