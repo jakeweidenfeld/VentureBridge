@@ -30,7 +30,7 @@ function SignupForm() {
       password,
       options: {
         data: { full_name: fullName, user_type: userType },
-        emailRedirectTo: `${window.location.origin}/dashboard`,
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
       },
     });
 
@@ -47,7 +47,7 @@ function SignupForm() {
     await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/dashboard`,
+        redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
         queryParams: { user_type: userType },
       },
     });
